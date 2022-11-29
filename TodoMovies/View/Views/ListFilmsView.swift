@@ -29,9 +29,8 @@ class ListFilmsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configTableViewDelegate(delegate:UITableViewDelegate, dataSource:UITableViewDataSource){
+    public func configTableViewDelegate(delegate:UITableViewDelegate){
         self.listFilmsTableView.delegate = delegate
-        self.listFilmsTableView.dataSource = dataSource
     }
     
     private func addSubViews(){

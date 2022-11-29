@@ -23,6 +23,10 @@ class FilmsViewModelCell {
         return self.model.original_title
     }
     
+    public var getDateFilm:String {
+        return self.model.release_date
+    }
+    
     public func getBackDropPath() -> Data?{
         guard let urlImage = URL(string: "https://image.tmdb.org/t/p/w500\(self.model.backdrop_path)") else {return nil}
             do{

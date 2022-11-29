@@ -6,42 +6,46 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ListFilmsViewController: UIViewController {
     
-    private let listFilmsView = ListFilmsView()
+    lazy var listFilmsView:ListFilmsView = {
+        let view = ListFilmsView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .listFilms)
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.listFilmsView.configTableViewDelegate(delegate: self, dataSource: self)
+        self.listFilmsView.configTableViewDelegate(delegate: self)
+        self.configBindings()
+    }
+    
+    private func configBindings(){
+        self.viewModel.model.bind(to: self.listFilmsView.listFilmsTableView.rx.items(cellIdentifier: ListFilmsTableViewCell.identifier, cellType: ListFilmsTableViewCell.self)){ (row, model, cell) in
+            cell.configCells(model: model)
+        }.disposed(by: self.disposeBag)
     }
     
     override func loadView() {
         super.loadView()
-        self.view = self.listFilmsView
+        self.addSubViews()
+        ConfigConstraints.configConstraintsEqualToView(element: self.listFilmsView, isEqualTo: self.view)
     }
+    
+    private func addSubViews(){
+        self.view.addSubview(self.listFilmsView)
+    }
+    
 }
 
-extension ListFilmsViewController:UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.model.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: ListFilmsTableViewCell.identifier, for: indexPath) as? ListFilmsTableViewCell {
-            cell.configCells(model: self.viewModel.getIndexPath(indexPath: indexPath))
-            return cell
-        }
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsFilmViewController:DetailsFilmViewController = DetailsFilmViewController()
-        detailsFilmViewController.titleFilm = self.viewModel.model[indexPath.row].original_title
-        self.navigationController?.pushViewController(detailsFilmViewController, animated: true)
-    }
-    
+extension ListFilmsViewController:UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }

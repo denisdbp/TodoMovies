@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class FilmsViewModel {
     
     private var apiFilmsProvider:ApiFilmsProvider?
-    public var model:[MovieModel] = []
+    public let model: PublishSubject<[MovieModel]> = PublishSubject()
+    private let disposeBag = DisposeBag()
     
     init(apiFilmsProvider:ApiFilmsProvider, option:OptionProvider){
         self.apiFilmsProvider = apiFilmsProvider
@@ -18,14 +21,12 @@ class FilmsViewModel {
             guard let self = self else {return}
             switch result {
             case .success(let movies):
-                self.model = movies[0].results
+                DispatchQueue.main.async {
+                    self.model.onNext(movies[0].results)
+                }
             case .failure(let error):
-                print(error.localizedDescription)
+                self.model.onError(error)
             }
         })
     }
-    
-    public func getIndexPath(indexPath : IndexPath) -> MovieModel{
-            return self.model[indexPath.row]
-        }
 }

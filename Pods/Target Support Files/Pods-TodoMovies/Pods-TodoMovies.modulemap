@@ -1,0 +1,6 @@
+framework module Pods_TodoMovies {
+  umbrella header "Pods-TodoMovies-umbrella.h"
+
+  export *
+  module * { export * }
+}

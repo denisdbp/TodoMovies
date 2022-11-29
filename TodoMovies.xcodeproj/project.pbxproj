@@ -22,9 +22,14 @@
 		84D5922C2935733F00DCC5F6 /* FilmsViewModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5922B2935733F00DCC5F6 /* FilmsViewModelCell.swift */; };
 		84D5922E29358EF700DCC5F6 /* DetailsFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5922D29358EF700DCC5F6 /* DetailsFilmViewController.swift */; };
 		84D5923029358F1200DCC5F6 /* DetailsFilmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5922F29358F1200DCC5F6 /* DetailsFilmView.swift */; };
+		84D59232293631D600DCC5F6 /* ListFimsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D59231293631D600DCC5F6 /* ListFimsCellView.swift */; };
+		C41D3F147D418EF0D5F5F080 /* Pods_TodoMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AC13613D91418E425246E6 /* Pods_TodoMovies.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182C3AC0A3703B3ECA0EED69 /* Pods-TodoMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoMovies.release.xcconfig"; path = "Target Support Files/Pods-TodoMovies/Pods-TodoMovies.release.xcconfig"; sourceTree = "<group>"; };
+		31AC13613D91418E425246E6 /* Pods_TodoMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AD7CA7B02C6058733A7D853 /* Pods-TodoMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoMovies.debug.xcconfig"; path = "Target Support Files/Pods-TodoMovies/Pods-TodoMovies.debug.xcconfig"; sourceTree = "<group>"; };
 		84D591FF29354EE100DCC5F6 /* TodoMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5920229354EE100DCC5F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D5920429354EE100DCC5F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +47,7 @@
 		84D5922B2935733F00DCC5F6 /* FilmsViewModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsViewModelCell.swift; sourceTree = "<group>"; };
 		84D5922D29358EF700DCC5F6 /* DetailsFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFilmViewController.swift; sourceTree = "<group>"; };
 		84D5922F29358F1200DCC5F6 /* DetailsFilmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFilmView.swift; sourceTree = "<group>"; };
+		84D59231293631D600DCC5F6 /* ListFimsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFimsCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C41D3F147D418EF0D5F5F080 /* Pods_TodoMovies.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +67,8 @@
 			children = (
 				84D5920129354EE100DCC5F6 /* TodoMovies */,
 				84D5920029354EE100DCC5F6 /* Products */,
+				A28F73F8CC9A29B2961F7D74 /* Pods */,
+				B055858A42036305DC16845D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +136,7 @@
 			children = (
 				84D59222293555C200DCC5F6 /* ListFilmsView.swift */,
 				84D5922F29358F1200DCC5F6 /* DetailsFilmView.swift */,
+				84D59231293631D600DCC5F6 /* ListFimsCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,6 +160,24 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		A28F73F8CC9A29B2961F7D74 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3AD7CA7B02C6058733A7D853 /* Pods-TodoMovies.debug.xcconfig */,
+				182C3AC0A3703B3ECA0EED69 /* Pods-TodoMovies.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B055858A42036305DC16845D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31AC13613D91418E425246E6 /* Pods_TodoMovies.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84D5921329354EE300DCC5F6 /* Build configuration list for PBXNativeTarget "TodoMovies" */;
 			buildPhases = (
+				D94D185350938FAAFBE229EE /* [CP] Check Pods Manifest.lock */,
 				84D591FB29354EE100DCC5F6 /* Sources */,
 				84D591FC29354EE100DCC5F6 /* Frameworks */,
 				84D591FD29354EE100DCC5F6 /* Resources */,
+				FD48DFD99F6B21D28B5B7296 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +245,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D94D185350938FAAFBE229EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TodoMovies-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD48DFD99F6B21D28B5B7296 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TodoMovies/Pods-TodoMovies-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TodoMovies/Pods-TodoMovies-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TodoMovies/Pods-TodoMovies-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84D591FB29354EE100DCC5F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -227,6 +299,7 @@
 				84D5922A29355C5A00DCC5F6 /* ListFilmsTableViewCell.swift in Sources */,
 				84D5923029358F1200DCC5F6 /* DetailsFilmView.swift in Sources */,
 				84D5920329354EE100DCC5F6 /* AppDelegate.swift in Sources */,
+				84D59232293631D600DCC5F6 /* ListFimsCellView.swift in Sources */,
 				84D59223293555C200DCC5F6 /* ListFilmsView.swift in Sources */,
 				84D5920529354EE100DCC5F6 /* SceneDelegate.swift in Sources */,
 				84D5921A293551C900DCC5F6 /* ListFilmsModel.swift in Sources */,
@@ -368,6 +441,7 @@
 		};
 		84D5921429354EE300DCC5F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AD7CA7B02C6058733A7D853 /* Pods-TodoMovies.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -396,6 +470,7 @@
 		};
 		84D5921529354EE300DCC5F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 182C3AC0A3703B3ECA0EED69 /* Pods-TodoMovies.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
