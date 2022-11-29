@@ -19,6 +19,7 @@
 		84D59226293559E300DCC5F6 /* ConfigConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D59225293559E300DCC5F6 /* ConfigConstraints.swift */; };
 		84D5922829355A8200DCC5F6 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5922729355A8200DCC5F6 /* CustomColors.swift */; };
 		84D5922A29355C5A00DCC5F6 /* ListFilmsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5922929355C5A00DCC5F6 /* ListFilmsTableViewCell.swift */; };
+		84D5922C2935733F00DCC5F6 /* FilmsViewModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5922B2935733F00DCC5F6 /* FilmsViewModelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		84D59225293559E300DCC5F6 /* ConfigConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigConstraints.swift; sourceTree = "<group>"; };
 		84D5922729355A8200DCC5F6 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		84D5922929355C5A00DCC5F6 /* ListFilmsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilmsTableViewCell.swift; sourceTree = "<group>"; };
+		84D5922B2935733F00DCC5F6 /* FilmsViewModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsViewModelCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				84D5921B293551DF00DCC5F6 /* FilmsViewModel.swift */,
+				84D5922B2935733F00DCC5F6 /* FilmsViewModelCell.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				84D59223293555C200DCC5F6 /* ListFilmsView.swift in Sources */,
 				84D5920529354EE100DCC5F6 /* SceneDelegate.swift in Sources */,
 				84D5921A293551C900DCC5F6 /* ListFilmsModel.swift in Sources */,
+				84D5922C2935733F00DCC5F6 /* FilmsViewModelCell.swift in Sources */,
 				84D5922829355A8200DCC5F6 /* CustomColors.swift in Sources */,
 				84D5921F2935522400DCC5F6 /* ApiFilmsProvider.swift in Sources */,
 			);
