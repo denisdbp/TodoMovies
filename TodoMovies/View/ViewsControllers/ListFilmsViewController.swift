@@ -15,7 +15,6 @@ class ListFilmsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.listFilmsView.configTableViewDelegate(delegate: self, dataSource: self)
-       
     }
     
     override func loadView() {
@@ -35,6 +34,12 @@ extension ListFilmsViewController:UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsFilmViewController:DetailsFilmViewController = DetailsFilmViewController()
+        detailsFilmViewController.titleFilm = self.viewModel.model[indexPath.row].original_title
+        self.navigationController?.pushViewController(detailsFilmViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
