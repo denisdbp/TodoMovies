@@ -7,7 +7,17 @@
 
 import UIKit
 
+protocol ListFimsCellViewProtocol {
+    func buttonLike()
+}
+
 class ListFimsCellView: UIView {
+    
+    private var delegate:ListFimsCellViewProtocol?
+    
+    public func delegate(delegate:ListFimsCellViewProtocol){
+        self.delegate = delegate
+    }
     
     lazy var filmImageView:UIImageView = {
         let image = UIImageView()
@@ -39,6 +49,7 @@ class ListFimsCellView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .black
+        button.addTarget(self, action: #selector(self.buttonLike), for: .touchUpInside)
         return button
     }()
     
@@ -62,6 +73,10 @@ class ListFimsCellView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func buttonLike(){
+        self.delegate?.buttonLike()
     }
     
     private func addSubViews(){

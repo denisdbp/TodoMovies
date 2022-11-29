@@ -9,10 +9,14 @@ import Foundation
 
 class FilmsViewModelCell {
     
-    var model:MovieModel
+    private var model:MovieModel
     
     init(model:MovieModel) {
         self.model = model
+    }
+    
+    public var getModel:MovieModel {
+        return self.model
     }
     
     public var getFilmImage:String {
@@ -27,6 +31,10 @@ class FilmsViewModelCell {
         return self.model.release_date
     }
     
+    public var getLiked:Bool {
+        return self.model.video
+    }
+    
     public func getBackDropPath() -> Data?{
         guard let urlImage = URL(string: "https://image.tmdb.org/t/p/w500\(self.model.backdrop_path)") else {return nil}
             do{
@@ -37,4 +45,8 @@ class FilmsViewModelCell {
             }
             return nil
         }
+    
+    public func updateLike(like:Bool) {
+        self.model.video = like
+    }
 }

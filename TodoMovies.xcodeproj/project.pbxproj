@@ -23,6 +23,7 @@
 		84D5922E29358EF700DCC5F6 /* DetailsFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5922D29358EF700DCC5F6 /* DetailsFilmViewController.swift */; };
 		84D5923029358F1200DCC5F6 /* DetailsFilmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5922F29358F1200DCC5F6 /* DetailsFilmView.swift */; };
 		84D59232293631D600DCC5F6 /* ListFimsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D59231293631D600DCC5F6 /* ListFimsCellView.swift */; };
+		84D5923429366BAC00DCC5F6 /* DetailsFilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5923329366BAC00DCC5F6 /* DetailsFilmModel.swift */; };
 		C41D3F147D418EF0D5F5F080 /* Pods_TodoMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AC13613D91418E425246E6 /* Pods_TodoMovies.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		84D5922D29358EF700DCC5F6 /* DetailsFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFilmViewController.swift; sourceTree = "<group>"; };
 		84D5922F29358F1200DCC5F6 /* DetailsFilmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFilmView.swift; sourceTree = "<group>"; };
 		84D59231293631D600DCC5F6 /* ListFimsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFimsCellView.swift; sourceTree = "<group>"; };
+		84D5923329366BAC00DCC5F6 /* DetailsFilmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFilmModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				84D59219293551C900DCC5F6 /* ListFilmsModel.swift */,
+				84D5923329366BAC00DCC5F6 /* DetailsFilmModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,7 +169,6 @@
 				3AD7CA7B02C6058733A7D853 /* Pods-TodoMovies.debug.xcconfig */,
 				182C3AC0A3703B3ECA0EED69 /* Pods-TodoMovies.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -300,6 +302,7 @@
 				84D5923029358F1200DCC5F6 /* DetailsFilmView.swift in Sources */,
 				84D5920329354EE100DCC5F6 /* AppDelegate.swift in Sources */,
 				84D59232293631D600DCC5F6 /* ListFimsCellView.swift in Sources */,
+				84D5923429366BAC00DCC5F6 /* DetailsFilmModel.swift in Sources */,
 				84D59223293555C200DCC5F6 /* ListFilmsView.swift in Sources */,
 				84D5920529354EE100DCC5F6 /* SceneDelegate.swift in Sources */,
 				84D5921A293551C900DCC5F6 /* ListFilmsModel.swift in Sources */,

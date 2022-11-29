@@ -6,22 +6,31 @@
 //
 
 import UIKit
+import RxSwift
 
 class DetailsFilmViewController: UIViewController {
     
     private let detailsFilmView:DetailsFilmView = DetailsFilmView()
-    private let viewModel:FilmsViewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .detailFilm)
+    public var movieId:Int = 0
+    private var viewModel:FilmsViewModel?
+    private let disposeBag = DisposeBag()
     
-    public var titleFilm:String = ""
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.detailsFilmView.titleFilmLabel.text = self.titleFilm
-
+        self.viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .detailFilms, movieId: self.movieId)
+        self.configView()
     }
     
     override func loadView() {
         super.loadView()
         self.view = self.detailsFilmView
+    }
+    
+    private func configView(){
+        self.viewModel?.detailsMovieModel.subscribe(onNext: { [weak self] detailsModel in
+            guard let self = self else {return}
+            print(detailsModel.count)
+            self.detailsFilmView.titleFilmLabel.text = detailsModel[0].original_title
+        }).disposed(by: self.disposeBag)
     }
 }

@@ -9,15 +9,32 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum Option {
+    case listFilms
+    case detailFilms
+}
+
 class FilmsViewModel {
     
     private var apiFilmsProvider:ApiFilmsProvider?
     public let model: PublishSubject<[MovieModel]> = PublishSubject()
-    private let disposeBag = DisposeBag()
+    public let detailsMovieModel:PublishSubject<[DetailsFilmModel]> = PublishSubject()
+    public let disposeBag = DisposeBag()
     
-    init(apiFilmsProvider:ApiFilmsProvider, option:OptionProvider){
+    public let titleFilm:PublishSubject<String> = PublishSubject()
+    
+    init(apiFilmsProvider:ApiFilmsProvider, option:Option, movieId:Int){
         self.apiFilmsProvider = apiFilmsProvider
-        self.apiFilmsProvider?.requestApi(option: option, completion: { [weak self] result in
+        switch option {
+        case .listFilms:
+            self.listFilms()
+        case .detailFilms:
+            self.detailsFilm(movieId: movieId)
+        }
+    }
+    
+    private func listFilms(){
+        self.apiFilmsProvider?.listFilms(completion: { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let movies):
@@ -26,6 +43,19 @@ class FilmsViewModel {
                 }
             case .failure(let error):
                 self.model.onError(error)
+            }
+        })
+    }
+    
+    private func detailsFilm(movieId:Int){
+        self.apiFilmsProvider?.detailsFilm(movieId: movieId, completion: { result in
+            switch result {
+            case .success(let detailsMovies):
+                DispatchQueue.main.async {
+                    self.detailsMovieModel.onNext(detailsMovies)
+                }
+            case .failure(let error):
+                self.detailsMovieModel.onError(error)
             }
         })
     }
