@@ -18,5 +18,5 @@ struct MovieModel: Decodable {
     let overview : String
     let backdrop_path : String
     let release_date : String
-    let video : Bool
+    var video : Bool
 }

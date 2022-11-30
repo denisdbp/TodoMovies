@@ -84,6 +84,7 @@ class DetailsFilmView: UIView {
         self.configScrollView()
         self.configConstraintsOverviewFilmLabel()
         self.configConstraintsReturnButton()
+        ConfigGradient.configBackgroundImage(view: self.filmImageView)
         self.configAccessibility()
     }
     
@@ -113,7 +114,8 @@ class DetailsFilmView: UIView {
         NSLayoutConstraint.activate([
             self.titleFilmLabel.topAnchor.constraint(equalTo: self.filmImageView.bottomAnchor, constant: 10),
             self.titleFilmLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.titleFilmLabel.heightAnchor.constraint(equalToConstant: 50)
+            self.titleFilmLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            self.titleFilmLabel.bottomAnchor.constraint(equalTo: self.voteCountLabel.topAnchor, constant: -5)
         ])
     }
     

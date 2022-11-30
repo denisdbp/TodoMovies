@@ -36,6 +36,10 @@ class FilmsViewModelCell {
         return self.model.release_date
     }
     
+    public var getLike:Bool {
+        return self.model.video
+    }
+    
     //MARK: Funções
     // Função que requisita a imagem do Filme para a celula da TableView de Lista de Filmes
     public func getBackDropPath() -> Data?{
@@ -47,5 +51,10 @@ class FilmsViewModelCell {
             print("Erro ao carregar a imagem")
         }
         return nil
+    }
+    
+    // Funcao que atualiza o estado atual do like feed selecionado
+    public func updateLiked(liked:Bool){
+        self.model.video = liked
     }
 }

@@ -28,6 +28,15 @@ class ApiFilmsProvider {
                 if let error = error {
                     completion(.failure(error))
                 }
+                if let response = response as? HTTPURLResponse {
+                    guard let error = error else {return}
+                    switch response.statusCode {
+                    case 400...500:
+                        completion(.failure(error))
+                    default:
+                        break
+                    }
+                }
             }
         }
         task.resume()
@@ -47,6 +56,15 @@ class ApiFilmsProvider {
                 }
                 if let error = error {
                     completion(.failure(error))
+                }
+                if let response = response as? HTTPURLResponse {
+                    guard let error = error else {return}
+                    switch response.statusCode {
+                    case 400...500:
+                        completion(.failure(error))
+                    default:
+                        break
+                    }
                 }
             }
         }

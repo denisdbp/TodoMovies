@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol ListFimsCellViewProtocol {
+protocol ListFilmsCellViewProtocol {
     func buttonLike()
 }
 
 class ListFilmsCellView: UIView {
     
-    private var delegate:ListFimsCellViewProtocol?
+    private var delegate:ListFilmsCellViewProtocol?
     
-    public func delegate(delegate:ListFimsCellViewProtocol){
+    public func delegate(delegate:ListFilmsCellViewProtocol){
         self.delegate = delegate
     }
     
@@ -23,6 +23,8 @@ class ListFilmsCellView: UIView {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
+        image.clipsToBounds = true
+        image.layer.cornerRadius = 10
         image.isUserInteractionEnabled = false
         return image
     }()

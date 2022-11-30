@@ -34,6 +34,7 @@ class DetailsFilmViewController: UIViewController {
         self.addSubViews()
         ConfigConstraints.configConstraintsEqualToView(element: self.detailsFilmView, isEqualTo: self.view)
         self.navigationController?.navigationBar.isHidden = true
+        
     }
     
     //MARK: Funções

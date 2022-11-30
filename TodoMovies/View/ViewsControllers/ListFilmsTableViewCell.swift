@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol ListFilmsTableViewCellProtocol {
-    func reloadData(_ model:MovieModel)
-}
-
 class ListFilmsTableViewCell: UITableViewCell {
     
     //MARK: Variaveis
@@ -19,8 +15,6 @@ class ListFilmsTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    private var delegate:ListFilmsTableViewCellProtocol?
     
     static let identifier = "ListFilmsTableViewCell"
     private var viewModel:FilmsViewModelCell?
@@ -32,6 +26,7 @@ class ListFilmsTableViewCell: UITableViewCell {
         self.addSubViews()
         ConfigConstraints.configConstraintsEqualToView(element: self.listFilmsCellView, isEqualTo: self.contentView)
         self.configAccessibility()
+        self.listFilmsCellView.delegate(delegate: self)
     }
     
     required init?(coder: NSCoder) {
@@ -54,10 +49,6 @@ class ListFilmsTableViewCell: UITableViewCell {
         }
     }
     
-    public func delegate(delegate:ListFilmsTableViewCellProtocol) {
-        self.delegate = delegate
-    }
-    
     private func addSubViews(){
         self.contentView.addSubview(self.listFilmsCellView)
     }
@@ -67,5 +58,24 @@ class ListFilmsTableViewCell: UITableViewCell {
         self.contentView.isAccessibilityElement = true
         self.contentView.accessibilityLabel = "Células referente a lista de filmes"
         self.contentView.accessibilityIdentifier = "celulaListaDeFilmes"
+    }
+    
+    // Aqui faço o preenchimento do coracão do botao de Like e uso o video que vem retornado do JSON
+    // ele é um Bool
+    private func likedFeed(){
+        guard let viewModel = self.viewModel else {return}
+        if viewModel.getLike == false {
+            self.viewModel?.updateLiked(liked: true)
+            self.listFilmsCellView.likeButton.setImage(UIImage(named: "heartPreenchido")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }else {
+            self.viewModel?.updateLiked(liked: false)
+            self.listFilmsCellView.likeButton.setImage(UIImage(named: "heart")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        }
+    }
+}
+
+extension ListFilmsTableViewCell:ListFilmsCellViewProtocol {
+    func buttonLike() {
+        self.likedFeed()
     }
 }
