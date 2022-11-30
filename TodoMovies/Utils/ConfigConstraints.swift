@@ -8,8 +8,10 @@
 import Foundation
 import UIKit
 
+// Classe auxiliar para utilização de Constraints
 class ConfigConstraints {
     
+    // Função para ser utilizada sempre que as constraints de um elemento forem iguais as contraints da minha View
     static func configConstraintsEqualToView(element:UIView, isEqualTo view: UIView){
         NSLayoutConstraint.activate([
             element.topAnchor.constraint(equalTo: view.topAnchor),

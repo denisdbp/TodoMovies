@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RxSwift
 
 protocol ListFilmsTableViewCellProtocol {
     func reloadData(_ model:MovieModel)
@@ -14,37 +13,34 @@ protocol ListFilmsTableViewCellProtocol {
 
 class ListFilmsTableViewCell: UITableViewCell {
     
-    private var delegate:ListFilmsTableViewCellProtocol?
-    
-    private let disposeBag = DisposeBag()
-    
-    public func delegate(delegate:ListFilmsTableViewCellProtocol) {
-        self.delegate = delegate
-    }
-    
-    static let identifier = "ListFilmsTableViewCell"
-    
-    private var viewModel:FilmsViewModelCell?
-    
-    private var like:Bool = false
-    
+    //MARK: Variaveis
     lazy var listFilmsCellView:ListFilmsCellView = {
         let view = ListFilmsCellView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
+    private var delegate:ListFilmsTableViewCellProtocol?
+    
+    static let identifier = "ListFilmsTableViewCell"
+    private var viewModel:FilmsViewModelCell?
+    
+    //MARK: Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.backgroundColor = CustomColors.colorBlack
         self.addSubViews()
         ConfigConstraints.configConstraintsEqualToView(element: self.listFilmsCellView, isEqualTo: self.contentView)
+        self.configAccessibility()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Funções
+    // Função que configura as celulas recebendo o objeto populado da ListFilmsViewController
+    // Esta função esta sendo requisitada na ListFilmsViewController na configuração das celulas
     public func configCells(model:MovieModel){
         self.viewModel = FilmsViewModelCell(model: model)
         DispatchQueue.global().async {
@@ -58,7 +54,17 @@ class ListFilmsTableViewCell: UITableViewCell {
         }
     }
     
+    public func delegate(delegate:ListFilmsTableViewCellProtocol) {
+        self.delegate = delegate
+    }
+    
     private func addSubViews(){
         self.contentView.addSubview(self.listFilmsCellView)
+    }
+    
+    // Configuração de acessibilidade dos elementos
+    private func configAccessibility(){
+        self.contentView.isAccessibilityElement = true
+        self.contentView.accessibilityLabel = "Células referente a lista de filmes"
     }
 }

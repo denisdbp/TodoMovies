@@ -32,6 +32,7 @@ class ListFilmsView: UIView {
         self.addSubViews()
         ConfigConstraints.configConstraintsEqualToView(element: self.listFilmsTableView, isEqualTo: self)
         self.configConstraintLoadingIndicator()
+        self.configAccessibility()
     }
     
     required init?(coder: NSCoder) {
@@ -48,9 +49,16 @@ class ListFilmsView: UIView {
     }
     
     private func configConstraintLoadingIndicator(){
-            NSLayoutConstraint.activate([
-                self.loadingIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                self.loadingIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-            ])
-        }
+        NSLayoutConstraint.activate([
+            self.loadingIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.loadingIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
+    }
+    
+    // Configuração de acessibilidade dos elementos
+    private func configAccessibility(){
+        self.listFilmsTableView.isAccessibilityElement = true
+        self.listFilmsTableView.accessibilityLabel = "Lista de Filmes"
+        self.listFilmsTableView.accessibilityIdentifier = "listaDeFilmes"
+    }
 }

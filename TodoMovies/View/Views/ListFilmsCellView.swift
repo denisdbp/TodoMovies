@@ -69,6 +69,7 @@ class ListFilmsCellView: UIView {
         self.configConstraintTitleFilmView()
         self.configConstraintDateFilmLabel()
         self.configConstraintLikeButton()
+        self.configAccessibility()
     }
     
     required init?(coder: NSCoder) {
@@ -119,5 +120,29 @@ class ListFilmsCellView: UIView {
             self.imageLikeButton.widthAnchor.constraint(equalToConstant: 30),
             self.imageLikeButton.heightAnchor.constraint(equalToConstant: 30)
         ])
+    }
+    
+    // Configuração de acessibilidade dos elementos
+    private func configAccessibility(){
+        
+        self.filmImageView.isAccessibilityElement = true
+        self.filmImageView.accessibilityTraits = .image
+        self.filmImageView.accessibilityLabel = "Imagem do filme"
+        self.filmImageView.accessibilityIdentifier = "imagemDoFilme"
+        
+        self.titleFilmLabel.isAccessibilityElement = true
+        self.titleFilmLabel.accessibilityTraits = .staticText
+        self.titleFilmLabel.accessibilityLabel = "Titulo do filme"
+        self.titleFilmLabel.accessibilityIdentifier = "tituloDoFilme"
+        
+        self.dateFilmLabel.isAccessibilityElement = true
+        self.dateFilmLabel.accessibilityTraits = .staticText
+        self.dateFilmLabel.accessibilityLabel = "Quantidade de Likes do filme"
+        self.dateFilmLabel.accessibilityIdentifier = "dataDoFilme"
+        
+        self.likeButton.isAccessibilityElement = true
+        self.likeButton.accessibilityTraits = .button
+        self.likeButton.accessibilityLabel = "Botão para dar um Like do filme"
+        self.likeButton.accessibilityIdentifier = "botaoDeLike"
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8416B82C2937861A00C6A6C7 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B82B2937861A00C6A6C7 /* Alerts.swift */; };
 		84D5920329354EE100DCC5F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920229354EE100DCC5F6 /* AppDelegate.swift */; };
 		84D5920529354EE100DCC5F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920429354EE100DCC5F6 /* SceneDelegate.swift */; };
 		84D5920729354EE100DCC5F6 /* ListFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920629354EE100DCC5F6 /* ListFilmsViewController.swift */; };
@@ -31,6 +32,7 @@
 		182C3AC0A3703B3ECA0EED69 /* Pods-TodoMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoMovies.release.xcconfig"; path = "Target Support Files/Pods-TodoMovies/Pods-TodoMovies.release.xcconfig"; sourceTree = "<group>"; };
 		31AC13613D91418E425246E6 /* Pods_TodoMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD7CA7B02C6058733A7D853 /* Pods-TodoMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoMovies.debug.xcconfig"; path = "Target Support Files/Pods-TodoMovies/Pods-TodoMovies.debug.xcconfig"; sourceTree = "<group>"; };
+		8416B82B2937861A00C6A6C7 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		84D591FF29354EE100DCC5F6 /* TodoMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5920229354EE100DCC5F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D5920429354EE100DCC5F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8416B82A2937860A00C6A6C7 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				8416B82B2937861A00C6A6C7 /* Alerts.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		84D591F629354EE100DCC5F6 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +95,7 @@
 		84D5920129354EE100DCC5F6 /* TodoMovies */ = {
 			isa = PBXGroup;
 			children = (
+				8416B82A2937860A00C6A6C7 /* Alerts */,
 				84D59224293559C600DCC5F6 /* Utils */,
 				84D5921D293551FE00DCC5F6 /* Services */,
 				84D592182935515200DCC5F6 /* Model */,
@@ -296,6 +307,7 @@
 			files = (
 				84D59226293559E300DCC5F6 /* ConfigConstraints.swift in Sources */,
 				84D5921C293551DF00DCC5F6 /* FilmsViewModel.swift in Sources */,
+				8416B82C2937861A00C6A6C7 /* Alerts.swift in Sources */,
 				84D5920729354EE100DCC5F6 /* ListFilmsViewController.swift in Sources */,
 				84D5922E29358EF700DCC5F6 /* DetailsFilmViewController.swift in Sources */,
 				84D5922A29355C5A00DCC5F6 /* ListFilmsTableViewCell.swift in Sources */,

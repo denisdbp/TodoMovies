@@ -6,16 +6,20 @@
 //
 
 import Foundation
-import RxSwift
 
 class FilmsViewModelCell {
     
+    //MARK: Variaveis
     private var model:MovieModel
     
+    //MARK: Init
+    // Aqui inicio o objeto model para que toda vez que houver a scrollagem da TableView o mesmo apresente os dados
+    // Então neste caso esse init é sempre utilizado toda vez que houver uma scrollagem
     init(model:MovieModel) {
         self.model = model
     }
     
+    //MARK: Variaveis Gets
     public var getModel:MovieModel {
         return self.model
     }
@@ -32,14 +36,16 @@ class FilmsViewModelCell {
         return self.model.release_date
     }
     
+    //MARK: Funções
+    // Função que requisita a imagem do Filme para a celula da TableView de Lista de Filmes
     public func getBackDropPath() -> Data?{
         guard let urlImage = URL(string: "https://image.tmdb.org/t/p/w500\(self.model.backdrop_path)") else {return nil}
-            do{
-                let data = try Data(contentsOf: urlImage)
-                    return data
-            }catch{
-                print("Erro ao carregar a imagem")
-            }
-            return nil
+        do{
+            let data = try Data(contentsOf: urlImage)
+            return data
+        }catch{
+            print("Erro ao carregar a imagem")
         }
+        return nil
+    }
 }

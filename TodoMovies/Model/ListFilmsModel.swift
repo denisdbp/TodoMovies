@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Estrutura do JSON que é recebido da lista do endpoint GetSimilarMovies
 struct Movies: Decodable {
     let results : [MovieModel]
 }

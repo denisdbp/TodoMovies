@@ -44,12 +44,24 @@ class DetailsFilmView: UIView {
         return label
     }()
     
+    lazy var view : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var scrollView:UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
+    }()
+    
     lazy var overviewFilmLabel:UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = CustomColors.colorWhite
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
@@ -69,8 +81,10 @@ class DetailsFilmView: UIView {
         self.configConstraintsTitleFilmLabel()
         self.configConstraintsVoteCountLabel()
         self.configConstraintsPopularityViewsLabel()
+        self.configScrollView()
         self.configConstraintsOverviewFilmLabel()
         self.configConstraintsReturnButton()
+        self.configAccessibility()
     }
     
     required init?(coder: NSCoder) {
@@ -82,7 +96,7 @@ class DetailsFilmView: UIView {
         self.addSubview(self.titleFilmLabel)
         self.addSubview(self.voteCountLabel)
         self.addSubview(self.popularityViewsLabel)
-        self.addSubview(self.overviewFilmLabel)
+        self.addSubview(self.scrollView)
         self.filmImageView.addSubview(self.returnButton)
     }
     
@@ -117,12 +131,21 @@ class DetailsFilmView: UIView {
         ])
     }
     
+    private func configScrollViewConstraints(){
+        NSLayoutConstraint.activate([
+            self.scrollView.topAnchor.constraint(equalTo: self.titleFilmLabel.bottomAnchor, constant: 30),
+            self.scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
+    
     private func configConstraintsOverviewFilmLabel(){
         NSLayoutConstraint.activate([
-            self.overviewFilmLabel.topAnchor.constraint(equalTo: self.titleFilmLabel.bottomAnchor, constant: 20),
-            self.overviewFilmLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
-            self.overviewFilmLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 5),
-            self.overviewFilmLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            self.overviewFilmLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 5),
+            self.overviewFilmLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            self.overviewFilmLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+            self.overviewFilmLabel.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
     
@@ -133,5 +156,57 @@ class DetailsFilmView: UIView {
             self.returnButton.widthAnchor.constraint(equalToConstant: 50),
             self.returnButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    private func configViewConstraints(){
+        NSLayoutConstraint.activate([
+            self.view.topAnchor.constraint(equalTo: self.scrollView.topAnchor),
+            self.view.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor),
+            self.view.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor),
+            self.view.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
+            self.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor),
+            self.view.heightAnchor.constraint(equalToConstant: 500)
+        ])
+    }
+    
+    private func configScrollView(){
+        self.scrollView.addSubview(self.view)
+        self.configViewConstraints()
+        self.configScrollViewConstraints()
+        self.view.addSubview(self.overviewFilmLabel)
+    }
+    
+    // Configuração de acessibilidade dos elementos
+    private func configAccessibility(){
+        
+        self.filmImageView.isAccessibilityElement = true
+        self.filmImageView.accessibilityTraits = .image
+        self.filmImageView.accessibilityLabel = "Imagem do filme"
+        self.filmImageView.accessibilityIdentifier = "imagemDoFilme"
+        
+        self.titleFilmLabel.isAccessibilityElement = true
+        self.titleFilmLabel.accessibilityTraits = .staticText
+        self.titleFilmLabel.accessibilityLabel = "Titulo do filme"
+        self.titleFilmLabel.accessibilityIdentifier = "tituloDoFilme"
+        
+        self.voteCountLabel.isAccessibilityElement = true
+        self.voteCountLabel.accessibilityTraits = .staticText
+        self.voteCountLabel.accessibilityLabel = "Quantidade de Likes do filme"
+        self.voteCountLabel.accessibilityIdentifier = "likesDoFilme"
+        
+        self.popularityViewsLabel.isAccessibilityElement = true
+        self.popularityViewsLabel.accessibilityTraits = .staticText
+        self.popularityViewsLabel.accessibilityLabel = "Quantidade de Views do filme"
+        self.popularityViewsLabel.accessibilityIdentifier = "viewsDoFilme"
+        
+        self.overviewFilmLabel.isAccessibilityElement = true
+        self.overviewFilmLabel.accessibilityTraits = .staticText
+        self.overviewFilmLabel.accessibilityLabel = "Descrição do filme"
+        self.overviewFilmLabel.accessibilityIdentifier = "descricaoDoFilme"
+        
+        self.returnButton.isAccessibilityElement = true
+        self.overviewFilmLabel.accessibilityTraits = .button
+        self.overviewFilmLabel.accessibilityLabel = "Botão retornar para tela principal"
+        self.overviewFilmLabel.accessibilityIdentifier = "botaoRetornar"
     }
 }
