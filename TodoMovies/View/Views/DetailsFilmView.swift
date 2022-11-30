@@ -44,7 +44,7 @@ class DetailsFilmView: UIView {
         return label
     }()
     
-    lazy var view : UIView = {
+    lazy var viewScroll : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -142,9 +142,9 @@ class DetailsFilmView: UIView {
     
     private func configConstraintsOverviewFilmLabel(){
         NSLayoutConstraint.activate([
-            self.overviewFilmLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 5),
-            self.overviewFilmLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
-            self.overviewFilmLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+            self.overviewFilmLabel.topAnchor.constraint(equalTo: self.viewScroll.topAnchor, constant: 5),
+            self.overviewFilmLabel.leadingAnchor.constraint(equalTo: self.viewScroll.leadingAnchor, constant: 10),
+            self.overviewFilmLabel.trailingAnchor.constraint(equalTo: self.viewScroll.trailingAnchor, constant: -10),
             self.overviewFilmLabel.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
@@ -158,22 +158,22 @@ class DetailsFilmView: UIView {
         ])
     }
     
-    private func configViewConstraints(){
+    private func configViewScrollConstraints(){
         NSLayoutConstraint.activate([
-            self.view.topAnchor.constraint(equalTo: self.scrollView.topAnchor),
-            self.view.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor),
-            self.view.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor),
-            self.view.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
-            self.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor),
-            self.view.heightAnchor.constraint(equalToConstant: 500)
+            self.viewScroll.topAnchor.constraint(equalTo: self.scrollView.topAnchor),
+            self.viewScroll.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor),
+            self.viewScroll.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor),
+            self.viewScroll.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
+            self.viewScroll.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor),
+            self.viewScroll.heightAnchor.constraint(equalToConstant: 500)
         ])
     }
     
     private func configScrollView(){
-        self.scrollView.addSubview(self.view)
-        self.configViewConstraints()
+        self.scrollView.addSubview(self.viewScroll)
+        self.configViewScrollConstraints()
         self.configScrollViewConstraints()
-        self.view.addSubview(self.overviewFilmLabel)
+        self.viewScroll.addSubview(self.overviewFilmLabel)
     }
     
     // Configuração de acessibilidade dos elementos
@@ -208,5 +208,11 @@ class DetailsFilmView: UIView {
         self.overviewFilmLabel.accessibilityTraits = .button
         self.overviewFilmLabel.accessibilityLabel = "Botão retornar para tela principal"
         self.overviewFilmLabel.accessibilityIdentifier = "botaoRetornar"
+        
+        self.scrollView.isAccessibilityElement = true
+        self.scrollView.accessibilityIdentifier = "scrollDescricaoFilme"
+        
+        self.viewScroll.isAccessibilityElement = true
+        self.viewScroll.accessibilityIdentifier = "viewDaScrollDescricaoFilme"
     }
 }

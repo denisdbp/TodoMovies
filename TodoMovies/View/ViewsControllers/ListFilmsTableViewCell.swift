@@ -66,5 +66,6 @@ class ListFilmsTableViewCell: UITableViewCell {
     private func configAccessibility(){
         self.contentView.isAccessibilityElement = true
         self.contentView.accessibilityLabel = "Células referente a lista de filmes"
+        self.contentView.accessibilityIdentifier = "celulaListaDeFilmes"
     }
 }

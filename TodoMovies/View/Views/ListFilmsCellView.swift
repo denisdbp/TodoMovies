@@ -128,21 +128,21 @@ class ListFilmsCellView: UIView {
         self.filmImageView.isAccessibilityElement = true
         self.filmImageView.accessibilityTraits = .image
         self.filmImageView.accessibilityLabel = "Imagem do filme"
-        self.filmImageView.accessibilityIdentifier = "imagemDoFilme"
+        self.filmImageView.accessibilityIdentifier = "celulaImagemDoFilme"
         
         self.titleFilmLabel.isAccessibilityElement = true
         self.titleFilmLabel.accessibilityTraits = .staticText
         self.titleFilmLabel.accessibilityLabel = "Titulo do filme"
-        self.titleFilmLabel.accessibilityIdentifier = "tituloDoFilme"
+        self.titleFilmLabel.accessibilityIdentifier = "celulaTituloDoFilme"
         
         self.dateFilmLabel.isAccessibilityElement = true
         self.dateFilmLabel.accessibilityTraits = .staticText
         self.dateFilmLabel.accessibilityLabel = "Quantidade de Likes do filme"
-        self.dateFilmLabel.accessibilityIdentifier = "dataDoFilme"
+        self.dateFilmLabel.accessibilityIdentifier = "celulaDataDoFilme"
         
         self.likeButton.isAccessibilityElement = true
         self.likeButton.accessibilityTraits = .button
         self.likeButton.accessibilityLabel = "Botão para dar um Like do filme"
-        self.likeButton.accessibilityIdentifier = "botaoDeLike"
+        self.likeButton.accessibilityIdentifier = "celulaBotaoDeLike"
     }
 }

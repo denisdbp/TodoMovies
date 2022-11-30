@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8416B82C2937861A00C6A6C7 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B82B2937861A00C6A6C7 /* Alerts.swift */; };
 		8416B83429379E6800C6A6C7 /* TodoMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B83329379E6800C6A6C7 /* TodoMoviesTests.swift */; };
+		8416B8412937A92900C6A6C7 /* TodoMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B8402937A92900C6A6C7 /* TodoMoviesUITests.swift */; };
+		8416B8432937A92900C6A6C7 /* TodoMoviesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B8422937A92900C6A6C7 /* TodoMoviesUITestsLaunchTests.swift */; };
 		84D5920329354EE100DCC5F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920229354EE100DCC5F6 /* AppDelegate.swift */; };
 		84D5920529354EE100DCC5F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920429354EE100DCC5F6 /* SceneDelegate.swift */; };
 		84D5920729354EE100DCC5F6 /* ListFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920629354EE100DCC5F6 /* ListFilmsViewController.swift */; };
@@ -37,6 +39,13 @@
 			remoteGlobalIDString = 84D591FE29354EE100DCC5F6;
 			remoteInfo = TodoMovies;
 		};
+		8416B8442937A92900C6A6C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84D591F729354EE100DCC5F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84D591FE29354EE100DCC5F6;
+			remoteInfo = TodoMovies;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +55,9 @@
 		8416B82B2937861A00C6A6C7 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		8416B83129379E6800C6A6C7 /* TodoMoviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMoviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8416B83329379E6800C6A6C7 /* TodoMoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesTests.swift; sourceTree = "<group>"; };
+		8416B83E2937A92900C6A6C7 /* TodoMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8416B8402937A92900C6A6C7 /* TodoMoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesUITests.swift; sourceTree = "<group>"; };
+		8416B8422937A92900C6A6C7 /* TodoMoviesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		84D591FF29354EE100DCC5F6 /* TodoMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5920229354EE100DCC5F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D5920429354EE100DCC5F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +81,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		8416B82E29379E6800C6A6C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8416B83B2937A92900C6A6C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -102,11 +121,21 @@
 			path = TodoMoviesTests;
 			sourceTree = "<group>";
 		};
+		8416B83F2937A92900C6A6C7 /* TodoMoviesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8416B8402937A92900C6A6C7 /* TodoMoviesUITests.swift */,
+				8416B8422937A92900C6A6C7 /* TodoMoviesUITestsLaunchTests.swift */,
+			);
+			path = TodoMoviesUITests;
+			sourceTree = "<group>";
+		};
 		84D591F629354EE100DCC5F6 = {
 			isa = PBXGroup;
 			children = (
 				84D5920129354EE100DCC5F6 /* TodoMovies */,
 				8416B83229379E6800C6A6C7 /* TodoMoviesTests */,
+				8416B83F2937A92900C6A6C7 /* TodoMoviesUITests */,
 				84D5920029354EE100DCC5F6 /* Products */,
 				A28F73F8CC9A29B2961F7D74 /* Pods */,
 				B055858A42036305DC16845D /* Frameworks */,
@@ -118,6 +147,7 @@
 			children = (
 				84D591FF29354EE100DCC5F6 /* TodoMovies.app */,
 				8416B83129379E6800C6A6C7 /* TodoMoviesTests.xctest */,
+				8416B83E2937A92900C6A6C7 /* TodoMoviesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,6 +272,24 @@
 			productReference = 8416B83129379E6800C6A6C7 /* TodoMoviesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8416B83D2937A92900C6A6C7 /* TodoMoviesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8416B8462937A92900C6A6C7 /* Build configuration list for PBXNativeTarget "TodoMoviesUITests" */;
+			buildPhases = (
+				8416B83A2937A92900C6A6C7 /* Sources */,
+				8416B83B2937A92900C6A6C7 /* Frameworks */,
+				8416B83C2937A92900C6A6C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8416B8452937A92900C6A6C7 /* PBXTargetDependency */,
+			);
+			name = TodoMoviesUITests;
+			productName = TodoMoviesUITests;
+			productReference = 8416B83E2937A92900C6A6C7 /* TodoMoviesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		84D591FE29354EE100DCC5F6 /* TodoMovies */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84D5921329354EE300DCC5F6 /* Build configuration list for PBXNativeTarget "TodoMovies" */;
@@ -275,6 +323,10 @@
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = 84D591FE29354EE100DCC5F6;
 					};
+					8416B83D2937A92900C6A6C7 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 84D591FE29354EE100DCC5F6;
+					};
 					84D591FE29354EE100DCC5F6 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -295,12 +347,20 @@
 			targets = (
 				84D591FE29354EE100DCC5F6 /* TodoMovies */,
 				8416B83029379E6800C6A6C7 /* TodoMoviesTests */,
+				8416B83D2937A92900C6A6C7 /* TodoMoviesUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8416B82F29379E6800C6A6C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8416B83C2937A92900C6A6C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -369,6 +429,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8416B83A2937A92900C6A6C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8416B8412937A92900C6A6C7 /* TodoMoviesUITests.swift in Sources */,
+				8416B8432937A92900C6A6C7 /* TodoMoviesUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84D591FB29354EE100DCC5F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -399,6 +468,11 @@
 			isa = PBXTargetDependency;
 			target = 84D591FE29354EE100DCC5F6 /* TodoMovies */;
 			targetProxy = 8416B83529379E6800C6A6C7 /* PBXContainerItemProxy */;
+		};
+		8416B8452937A92900C6A6C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84D591FE29354EE100DCC5F6 /* TodoMovies */;
+			targetProxy = 8416B8442937A92900C6A6C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -447,6 +521,40 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoMovies.app/TodoMovies";
+			};
+			name = Release;
+		};
+		8416B8472937A92900C6A6C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JMM295FRCU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.denis.TodoMoviesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TodoMovies;
+			};
+			name = Debug;
+		};
+		8416B8482937A92900C6A6C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JMM295FRCU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.denis.TodoMoviesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TodoMovies;
 			};
 			name = Release;
 		};
@@ -632,6 +740,15 @@
 			buildConfigurations = (
 				8416B83829379E6800C6A6C7 /* Debug */,
 				8416B83929379E6800C6A6C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8416B8462937A92900C6A6C7 /* Build configuration list for PBXNativeTarget "TodoMoviesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8416B8472937A92900C6A6C7 /* Debug */,
+				8416B8482937A92900C6A6C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
