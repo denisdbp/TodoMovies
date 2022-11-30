@@ -13,7 +13,7 @@ class DetailsFilmView: UIView {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
-        image.isUserInteractionEnabled = false
+        image.isUserInteractionEnabled = true
         return image
     }()
     
@@ -53,6 +53,14 @@ class DetailsFilmView: UIView {
         return label
     }()
     
+    lazy var returnButton:UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "seta-esquerda"), for: .normal)
+        button.setTitle("Voltar", for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = CustomColors.colorBlack
@@ -62,6 +70,7 @@ class DetailsFilmView: UIView {
         self.configConstraintsVoteCountLabel()
         self.configConstraintsPopularityViewsLabel()
         self.configConstraintsOverviewFilmLabel()
+        self.configConstraintsReturnButton()
     }
     
     required init?(coder: NSCoder) {
@@ -74,6 +83,7 @@ class DetailsFilmView: UIView {
         self.addSubview(self.voteCountLabel)
         self.addSubview(self.popularityViewsLabel)
         self.addSubview(self.overviewFilmLabel)
+        self.filmImageView.addSubview(self.returnButton)
     }
     
     private func configConstraintsFilmImageView(){
@@ -88,7 +98,8 @@ class DetailsFilmView: UIView {
     private func configConstraintsTitleFilmLabel(){
         NSLayoutConstraint.activate([
             self.titleFilmLabel.topAnchor.constraint(equalTo: self.filmImageView.bottomAnchor, constant: 10),
-            self.titleFilmLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10)
+            self.titleFilmLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            self.titleFilmLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -110,7 +121,17 @@ class DetailsFilmView: UIView {
         NSLayoutConstraint.activate([
             self.overviewFilmLabel.topAnchor.constraint(equalTo: self.titleFilmLabel.bottomAnchor, constant: 20),
             self.overviewFilmLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
-            self.overviewFilmLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 5)
+            self.overviewFilmLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 5),
+            self.overviewFilmLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
+    
+    private func configConstraintsReturnButton(){
+        NSLayoutConstraint.activate([
+            self.returnButton.topAnchor.constraint(equalTo: self.filmImageView.topAnchor, constant: 50),
+            self.returnButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            self.returnButton.widthAnchor.constraint(equalToConstant: 50),
+            self.returnButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

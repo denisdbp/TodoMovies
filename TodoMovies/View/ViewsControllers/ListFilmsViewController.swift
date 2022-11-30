@@ -18,17 +18,24 @@ class ListFilmsViewController: UIViewController {
     }()
     
     private var viewModel:FilmsViewModel?
-    
-    //private let viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .listFilms, movieId: 0)
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .listFilms, movieId: 0)
+        
         self.configBindings()
     }
     
     private func configBindings(){
+        self.viewModel?.loading.subscribe(onNext: { [weak self] loading in
+            guard let self = self else {return}
+            if loading == false {
+                self.listFilmsView.loadingIndicator.stopAnimating()
+                }
+        }).disposed(by: self.disposeBag)
+        
         self.listFilmsView.listFilmsTableView.rx.setDelegate(self).disposed(by: self.disposeBag)
         self.viewModel?.model.bind(to: self.listFilmsView.listFilmsTableView.rx.items(cellIdentifier: ListFilmsTableViewCell.identifier, cellType: ListFilmsTableViewCell.self)){ (row, model, cell) in
             cell.configCells(model: model)
@@ -39,7 +46,6 @@ class ListFilmsViewController: UIViewController {
             detailsFilmViewController.movieId = model.element?.id ?? 0
             self.navigationController?.pushViewController(detailsFilmViewController, animated: true)
         }.disposed(by: self.disposeBag)
-
     }
     
     override func loadView() {
@@ -51,11 +57,9 @@ class ListFilmsViewController: UIViewController {
     private func addSubViews(){
         self.view.addSubview(self.listFilmsView)
     }
-    
 }
 
 extension ListFilmsViewController:UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }

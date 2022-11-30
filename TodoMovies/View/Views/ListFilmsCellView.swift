@@ -11,7 +11,7 @@ protocol ListFimsCellViewProtocol {
     func buttonLike()
 }
 
-class ListFimsCellView: UIView {
+class ListFilmsCellView: UIView {
     
     private var delegate:ListFimsCellViewProtocol?
     

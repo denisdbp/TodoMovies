@@ -9,6 +9,14 @@ import UIKit
 
 class ListFilmsView: UIView {
     
+    lazy var loadingIndicator:UIActivityIndicatorView = {
+        let loading = UIActivityIndicatorView(style: .large)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        loading.color = .white
+        loading.startAnimating()
+        return loading
+    }()
+    
     lazy var listFilmsTableView:UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +31,7 @@ class ListFilmsView: UIView {
         self.backgroundColor = CustomColors.colorBlack
         self.addSubViews()
         ConfigConstraints.configConstraintsEqualToView(element: self.listFilmsTableView, isEqualTo: self)
+        self.configConstraintLoadingIndicator()
     }
     
     required init?(coder: NSCoder) {
@@ -35,5 +44,13 @@ class ListFilmsView: UIView {
     
     private func addSubViews(){
         self.addSubview(self.listFilmsTableView)
+        self.addSubview(self.loadingIndicator)
     }
+    
+    private func configConstraintLoadingIndicator(){
+            NSLayoutConstraint.activate([
+                self.loadingIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                self.loadingIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            ])
+        }
 }

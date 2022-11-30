@@ -19,9 +19,8 @@ class FilmsViewModel {
     private var apiFilmsProvider:ApiFilmsProvider?
     public let model: PublishSubject<[MovieModel]> = PublishSubject()
     public let detailsMovieModel:PublishSubject<[DetailsFilmModel]> = PublishSubject()
+    public let loading:PublishSubject<Bool> = PublishSubject()
     public let disposeBag = DisposeBag()
-    
-    public let titleFilm:PublishSubject<String> = PublishSubject()
     
     init(apiFilmsProvider:ApiFilmsProvider, option:Option, movieId:Int){
         self.apiFilmsProvider = apiFilmsProvider
@@ -41,6 +40,7 @@ class FilmsViewModel {
                 DispatchQueue.main.async {
                     self.model.onNext(movies[0].results)
                 }
+                self.loading.onNext(false)
             case .failure(let error):
                 self.model.onError(error)
             }
@@ -58,5 +58,16 @@ class FilmsViewModel {
                 self.detailsMovieModel.onError(error)
             }
         })
+    }
+    
+    public func getImageDetailsFilm(urlImage:String)->Data?{
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(urlImage)") else {return nil}
+            do {
+                let data = try Data(contentsOf: url)
+                return data
+            }catch {
+                
+            }
+        return nil
     }
 }

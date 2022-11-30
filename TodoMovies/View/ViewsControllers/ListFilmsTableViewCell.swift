@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol ListFilmsTableViewCellProtocol {
     func reloadData(_ model:MovieModel)
@@ -14,19 +15,21 @@ protocol ListFilmsTableViewCellProtocol {
 class ListFilmsTableViewCell: UITableViewCell {
     
     private var delegate:ListFilmsTableViewCellProtocol?
-        
-        public func delegate(delegate:ListFilmsTableViewCellProtocol) {
-            self.delegate = delegate
-        }
-
+    
+    private let disposeBag = DisposeBag()
+    
+    public func delegate(delegate:ListFilmsTableViewCellProtocol) {
+        self.delegate = delegate
+    }
+    
     static let identifier = "ListFilmsTableViewCell"
     
     private var viewModel:FilmsViewModelCell?
     
     private var like:Bool = false
     
-    lazy var listFilmsCellView:ListFimsCellView = {
-        let view = ListFimsCellView()
+    lazy var listFilmsCellView:ListFilmsCellView = {
+        let view = ListFilmsCellView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -49,14 +52,9 @@ class ListFilmsTableViewCell: UITableViewCell {
             DispatchQueue.main.async {
                 self.listFilmsCellView.filmImageView.image = UIImage(data: imageFilm)
                 self.listFilmsCellView.titleFilmLabel.text = self.viewModel?.getFilmTitle
-                if self.viewModel?.getLiked == true {
-                    self.listFilmsCellView.likeButton.setImage(self.listFilmsCellView.imageLikeButton.image?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
-                }else {
-                    self.listFilmsCellView.likeButton.setImage(self.listFilmsCellView.imageLikeButton.image?.withTintColor(.blue, renderingMode: .alwaysOriginal), for: .normal)
-                }
                 self.listFilmsCellView.dateFilmLabel.text = self.viewModel?.getDateFilm
+                self.listFilmsCellView.likeButton.setImage(self.listFilmsCellView.imageLikeButton.image?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
             }
-          
         }
     }
     

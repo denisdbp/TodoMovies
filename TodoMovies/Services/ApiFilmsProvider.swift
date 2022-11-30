@@ -12,8 +12,10 @@ class ApiFilmsProvider {
     private let keyApi = "api_key=0f9a3cef12bf5788122f13b1532b9b9e"
     private let language = "&language=pt-BR"
     
+    private var apiKey = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=0f9a3cef12bf5788122f13b1532b9b9e&language=pt-BR")
+    
     public func listFilms(completion:@escaping(Result<[Movies], Error>)->Void){
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/436270/similar?\(self.keyApi)\(self.language)") else {return}
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/4474/similar?\(self.keyApi)\(self.language)") else {return}
         let session = URLSession.shared
         let task = session.dataTask(with: url){(data, response, error) in
             if let data = data {
