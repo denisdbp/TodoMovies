@@ -9,14 +9,17 @@ import XCTest
 
 class TodoMoviesUITests: XCTestCase {
 
+    //Função para testar a UI
     func testUiFilms() throws {
         let app = XCUIApplication()
         app.launch()
 
+        // Aqui verifico se a tableView que tem na tela de lista de filmes ela existe e dou um Tap nela para passar para a próxima tela
         let listaDeFilmes = app.tables["listaDeFilmes"]
         XCTAssertTrue(listaDeFilmes.exists)
         listaDeFilmes.tap()
         
+        // Aqui somente verifico se existem os elementos que tem na tela de detalhe do filme
         let imageDoFilmeDetalhe = app.images["imagemDoFilme"]
         XCTAssertTrue(imageDoFilmeDetalhe.exists)
         

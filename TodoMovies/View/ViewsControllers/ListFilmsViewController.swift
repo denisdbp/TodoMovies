@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class ListFilmsViewController: UIViewController {
     
@@ -19,7 +17,6 @@ class ListFilmsViewController: UIViewController {
     }()
     
     private var viewModel:FilmsViewModel?
-    private let disposeBag = DisposeBag()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -38,29 +35,32 @@ class ListFilmsViewController: UIViewController {
     // Configuração de todos os Bindings ou seja o que esta sendo obersavado na ViewModel esta sendo enviado aqui
     // para poder ligar o que recebeu com a UI
     private func configBindings(){
+        guard let disposeBag = self.viewModel?.disposeBag else {return}
+        
         self.viewModel?.loading.subscribe(onNext: { [weak self] loading in
             guard let self = self else {return}
             if loading == false {
                 self.listFilmsView.loadingIndicator.stopAnimating()
             }
-        }).disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
         
         self.viewModel?.error.subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
+            self.listFilmsView.loadingIndicator.stopAnimating()
             Alerts.shared.alertError(title: "Ops..", message: "Houve um erro na requsição", viewController: self)
-        }).disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
         
-        self.listFilmsView.listFilmsTableView.rx.setDelegate(self).disposed(by: self.disposeBag)
+        self.listFilmsView.listFilmsTableView.rx.setDelegate(self).disposed(by: disposeBag)
         self.viewModel?.model.bind(to: self.listFilmsView.listFilmsTableView.rx.items(cellIdentifier: ListFilmsTableViewCell.identifier, cellType: ListFilmsTableViewCell.self)){ (row, model, cell) in
             cell.configCells(model: model)
-        }.disposed(by: self.disposeBag)
+        }.disposed(by: disposeBag)
         
         self.listFilmsView.listFilmsTableView.rx.modelSelected(MovieModel.self).subscribe { [weak self] model in
             guard let self = self else {return}
             let detailsFilmViewController:DetailsFilmViewController = DetailsFilmViewController()
             detailsFilmViewController.movieId = model.element?.id ?? 0
             self.navigationController?.pushViewController(detailsFilmViewController, animated: true)
-        }.disposed(by: self.disposeBag)
+        }.disposed(by: disposeBag)
     }
     
     private func addSubViews(){

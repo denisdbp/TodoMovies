@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RxSwift
 
 class DetailsFilmViewController: UIViewController {
     
@@ -21,7 +20,6 @@ class DetailsFilmViewController: UIViewController {
     // ela requisite os detalhes do filme
     public var movieId:Int = 0
     private var viewModel:FilmsViewModel?
-    private let disposeBag = DisposeBag()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -42,10 +40,12 @@ class DetailsFilmViewController: UIViewController {
     // Função que carrega os detalhes do filme que estão vindo do objeto observado detailsMovieModel
     // que recebe os dados populados da model
     private func loadingDetailsFilm(){
+        guard let disposeBag = self.viewModel?.disposeBag else {return}
+        
         self.viewModel?.error.subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             Alerts.shared.alertError(title: "Ops..", message: "Houve um erro na requsição", viewController: self)
-        }).disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
         
         self.viewModel?.detailsMovieModel.subscribe(onNext: { [weak self] detailsModel in
             guard let self = self else {return}
@@ -59,14 +59,15 @@ class DetailsFilmViewController: UIViewController {
                 }
             }
             self.detailsFilmView.overviewFilmLabel.text = detailsModel[0].overview
-        }).disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     // Aqui retorna para a tela principal do App
     private func returnButton(){
+        guard let disposeBag = self.viewModel?.disposeBag else {return}
         self.detailsFilmView.returnButton.rx.tap.subscribe { _ in
             self.navigationController?.popToRootViewController(animated: true)
-        }.disposed(by: self.disposeBag)
+        }.disposed(by: disposeBag)
     }
     
     private func addSubViews(){

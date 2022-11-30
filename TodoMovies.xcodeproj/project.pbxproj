@@ -11,6 +11,9 @@
 		8416B83429379E6800C6A6C7 /* TodoMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B83329379E6800C6A6C7 /* TodoMoviesTests.swift */; };
 		8416B8412937A92900C6A6C7 /* TodoMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B8402937A92900C6A6C7 /* TodoMoviesUITests.swift */; };
 		8416B8432937A92900C6A6C7 /* TodoMoviesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B8422937A92900C6A6C7 /* TodoMoviesUITestsLaunchTests.swift */; };
+		8416B84F2937CD4700C6A6C7 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 8416B84E2937CD4700C6A6C7 /* SnapshotTesting */; };
+		8416B85C2937D2F300C6A6C7 /* TodoMoviesSnapShotTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416B85B2937D2F300C6A6C7 /* TodoMoviesSnapShotTesting.swift */; };
+		8416B85F2937D46C00C6A6C7 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 8416B85E2937D46C00C6A6C7 /* SnapshotTesting */; };
 		84D5920329354EE100DCC5F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920229354EE100DCC5F6 /* AppDelegate.swift */; };
 		84D5920529354EE100DCC5F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920429354EE100DCC5F6 /* SceneDelegate.swift */; };
 		84D5920729354EE100DCC5F6 /* ListFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5920629354EE100DCC5F6 /* ListFilmsViewController.swift */; };
@@ -58,6 +61,8 @@
 		8416B83E2937A92900C6A6C7 /* TodoMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8416B8402937A92900C6A6C7 /* TodoMoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesUITests.swift; sourceTree = "<group>"; };
 		8416B8422937A92900C6A6C7 /* TodoMoviesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8416B8522937CE5700C6A6C7 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8416B85B2937D2F300C6A6C7 /* TodoMoviesSnapShotTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesSnapShotTesting.swift; sourceTree = "<group>"; };
 		84D591FF29354EE100DCC5F6 /* TodoMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D5920229354EE100DCC5F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D5920429354EE100DCC5F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8416B85F2937D46C00C6A6C7 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8416B84F2937CD4700C6A6C7 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				8416B83329379E6800C6A6C7 /* TodoMoviesTests.swift */,
+				8416B85B2937D2F300C6A6C7 /* TodoMoviesSnapShotTesting.swift */,
 			);
 			path = TodoMoviesTests;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 		B055858A42036305DC16845D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8416B8522937CE5700C6A6C7 /* RxSwift.framework */,
 				31AC13613D91418E425246E6 /* Pods_TodoMovies.framework */,
 			);
 			name = Frameworks;
@@ -268,6 +277,9 @@
 				8416B83629379E6800C6A6C7 /* PBXTargetDependency */,
 			);
 			name = TodoMoviesTests;
+			packageProductDependencies = (
+				8416B85E2937D46C00C6A6C7 /* SnapshotTesting */,
+			);
 			productName = TodoMoviesTests;
 			productReference = 8416B83129379E6800C6A6C7 /* TodoMoviesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -286,6 +298,9 @@
 				8416B8452937A92900C6A6C7 /* PBXTargetDependency */,
 			);
 			name = TodoMoviesUITests;
+			packageProductDependencies = (
+				8416B84E2937CD4700C6A6C7 /* SnapshotTesting */,
+			);
 			productName = TodoMoviesUITests;
 			productReference = 8416B83E2937A92900C6A6C7 /* TodoMoviesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -341,6 +356,9 @@
 				Base,
 			);
 			mainGroup = 84D591F629354EE100DCC5F6;
+			packageReferences = (
+				8416B84D2937CD4700C6A6C7 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 84D5920029354EE100DCC5F6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8416B85C2937D2F300C6A6C7 /* TodoMoviesSnapShotTesting.swift in Sources */,
 				8416B83429379E6800C6A6C7 /* TodoMoviesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,6 +791,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8416B84D2937CD4700C6A6C7 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8416B84E2937CD4700C6A6C7 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8416B84D2937CD4700C6A6C7 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+		8416B85E2937D46C00C6A6C7 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8416B84D2937CD4700C6A6C7 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84D591F729354EE100DCC5F6 /* Project object */;
 }
