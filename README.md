@@ -13,6 +13,10 @@ do filme ficou um pouco pequena, mas como ela pode ser scrollada é possível le
 Já na arquitetura decidi por fazer utilizando MVVM com RxSwift, não consegui utilizar o RxSwift em tudo, mas estou estudando para me aprimorar
 em programação reativa.
 
+Nas requisições da API decidi por utilizar forma nativa que é com URLSession.
+
+Tentei deixar o código mais clean possível e também tentei utilizar ao máximo o primeiro princípio de SOLID que é o da responsabilidade única.
+
 Para instalação do framework RxSwift utilizei o gerenciador de dependencias CocoaPods.
 
 Em testes unitários, decidi por fazer testes referentes as requisições da API.
