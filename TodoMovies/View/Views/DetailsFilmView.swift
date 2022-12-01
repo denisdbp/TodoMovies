@@ -207,11 +207,12 @@ class DetailsFilmView: UIView {
         self.overviewFilmLabel.accessibilityIdentifier = "descricaoDoFilme"
         
         self.returnButton.isAccessibilityElement = true
-        self.overviewFilmLabel.accessibilityTraits = .button
-        self.overviewFilmLabel.accessibilityLabel = "Botão retornar para tela principal"
-        self.overviewFilmLabel.accessibilityIdentifier = "botaoRetornar"
+        self.returnButton.accessibilityTraits = .button
+        self.returnButton.accessibilityLabel = "Botão retornar para tela principal"
+        self.returnButton.accessibilityIdentifier = "botaoRetornar"
         
         self.scrollView.isAccessibilityElement = true
+        self.scrollView.accessibilityLabel = "Descrição do filme"
         self.scrollView.accessibilityIdentifier = "scrollDescricaoFilme"
         
         self.viewScroll.isAccessibilityElement = true
