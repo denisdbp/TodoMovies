@@ -9,7 +9,7 @@ import Foundation
 
 class FilmsViewModelCell {
     
-    //MARK: Variaveis
+    //MARK: Atributos
     private var model:MovieModel
     
     //MARK: Init
@@ -40,7 +40,7 @@ class FilmsViewModelCell {
         return self.model.video
     }
     
-    //MARK: Funções
+    //MARK: Metodos
     // Função que requisita a imagem do Filme para a celula da TableView de Lista de Filmes
     public func getBackDropPath() -> Data?{
         guard let urlImage = URL(string: "https://image.tmdb.org/t/p/w500\(self.model.backdrop_path)") else {return nil}
@@ -48,7 +48,7 @@ class FilmsViewModelCell {
             let data = try Data(contentsOf: urlImage)
             return data
         }catch{
-            print("Erro ao carregar a imagem")
+            
         }
         return nil
     }

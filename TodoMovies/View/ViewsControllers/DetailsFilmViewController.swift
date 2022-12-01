@@ -9,7 +9,7 @@ import UIKit
 
 class DetailsFilmViewController: UIViewController {
     
-    //MARK: Variaveis
+    //MARK: Atributos
     lazy var detailsFilmView:DetailsFilmView = {
         let view = DetailsFilmView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -24,9 +24,8 @@ class DetailsFilmViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .detailFilms, movieId: self.movieId)
-        self.loadingDetailsFilm()
-        self.returnButton()
+        self.isRequestDetailsMovie()
+        self.configBindings()
     }
     
     override func loadView() {
@@ -37,17 +36,30 @@ class DetailsFilmViewController: UIViewController {
         
     }
     
-    //MARK: Funções
+    //MARK: Metodos
+    // Função que faz a requisição dos detalhes do filme
+    private func isRequestDetailsMovie(){
+        self.viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .detailFilms, movieId: self.movieId)
+    }
+    
     // Função que carrega os detalhes do filme que estão vindo do objeto observado detailsMovieModel
     // que recebe os dados populados da model
-    private func loadingDetailsFilm(){
+    private func configBindings(){
+        self.isErrorRequestDetailsMovie()
+        self.isLoadingDetailsMovie()
+        self.returnButton()
+    }
+    
+    private func isErrorRequestDetailsMovie(){
         guard let disposeBag = self.viewModel?.disposeBag else {return}
-        
         self.viewModel?.error.subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             Alerts.shared.alertError(title: "Ops..", message: "Houve um erro na requsição", viewController: self)
         }).disposed(by: disposeBag)
-        
+    }
+    
+    private func isLoadingDetailsMovie(){
+        guard let disposeBag = self.viewModel?.disposeBag else {return}
         self.viewModel?.detailsMovieModel.subscribe(onNext: { [weak self] detailsModel in
             guard let self = self else {return}
             self.detailsFilmView.titleFilmLabel.text = detailsModel[0].original_title

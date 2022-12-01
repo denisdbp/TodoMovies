@@ -9,7 +9,7 @@ import UIKit
 
 class ListFilmsTableViewCell: UITableViewCell {
     
-    //MARK: Variaveis
+    //MARK: Atributos
     lazy var listFilmsCellView:ListFilmsCellView = {
         let view = ListFilmsCellView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class ListFilmsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Funções
+    //MARK: Metodos
     // Função que configura as celulas recebendo o objeto populado da ListFilmsViewController
     // Esta função esta sendo requisitada na ListFilmsViewController na configuração das celulas
     public func configCells(model:MovieModel){
@@ -61,16 +61,21 @@ class ListFilmsTableViewCell: UITableViewCell {
     }
     
     // Aqui faço o preenchimento do coracão do botao de Like e uso o video que vem retornado do JSON
-    // ele é um Bool
+    // que no caso ele é um Bool
     private func likedFeed(){
         guard let viewModel = self.viewModel else {return}
         if viewModel.getLike == false {
-            self.viewModel?.updateLiked(liked: true)
+            self.updateLiked(liked: true)
             self.listFilmsCellView.likeButton.setImage(UIImage(named: "heartPreenchido")?.withRenderingMode(.alwaysOriginal), for: .normal)
         }else {
-            self.viewModel?.updateLiked(liked: false)
+            self.updateLiked(liked: false)
             self.listFilmsCellView.likeButton.setImage(UIImage(named: "heart")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
         }
+    }
+    
+    // Aqui faço o update na ViewModel referente a true ou false no liked
+    private func updateLiked(liked:Bool){
+        self.viewModel?.updateLiked(liked: liked)
     }
 }
 

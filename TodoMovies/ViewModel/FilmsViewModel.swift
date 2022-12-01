@@ -17,7 +17,7 @@ enum EndPointOption {
 
 class FilmsViewModel {
     
-    //MARK: Variaveis
+    //MARK: Atributos
     private var apiFilmsProvider:ApiFilmsProvider?
     // Variaveis que estão sendo observadas quando seu valor mudar
     public let model: PublishSubject<[MovieModel]> = PublishSubject()
@@ -38,7 +38,7 @@ class FilmsViewModel {
         }
     }
     
-    //MARK: Funções
+    //MARK: Metodos
     // Função que requisita na classe ApiFilmsProvider o JSON da API do Endpoint getMovieDetails
     private func listFilms(){
         self.apiFilmsProvider?.listFilms(completion: { [weak self] result in

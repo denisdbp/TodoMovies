@@ -9,7 +9,7 @@ import UIKit
 
 class ListFilmsViewController: UIViewController {
     
-    //MARK: Variaveis
+    //MARK: Atributos
     lazy var listFilmsView:ListFilmsView = {
         let view = ListFilmsView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +21,7 @@ class ListFilmsViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .listFilms, movieId: 0)
+        self.isRequestListFilms()
         self.configBindings()
     }
     
@@ -31,30 +31,50 @@ class ListFilmsViewController: UIViewController {
         ConfigConstraints.configConstraintsEqualToView(element: self.listFilmsView, isEqualTo: self.view)
     }
     
-    //MARK: Funções
+    //MARK: Metodos
+    //Função que faz request da lista de filmes
+    private func isRequestListFilms(){
+        self.viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .listFilms, movieId: 0)
+    }
+    
     // Configuração de todos os Bindings ou seja o que esta sendo obersavado na ViewModel esta sendo enviado aqui
     // para poder ligar o que recebeu com a UI
     private func configBindings(){
+        self.isLoadingMovies()
+        self.isErrorRequestListMovies()
+        self.isLoadingListMoviesTableView()
+        self.isSelectedMovie()
+    }
+    
+    private func isLoadingMovies(){
         guard let disposeBag = self.viewModel?.disposeBag else {return}
-        
         self.viewModel?.loading.subscribe(onNext: { [weak self] loading in
             guard let self = self else {return}
             if loading == false {
                 self.listFilmsView.loadingIndicator.stopAnimating()
             }
         }).disposed(by: disposeBag)
-        
+    }
+    
+    private func isErrorRequestListMovies(){
+        guard let disposeBag = self.viewModel?.disposeBag else {return}
         self.viewModel?.error.subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.listFilmsView.loadingIndicator.stopAnimating()
             Alerts.shared.alertError(title: "Ops..", message: "Houve um erro na requsição", viewController: self)
         }).disposed(by: disposeBag)
-        
+    }
+    
+    private func isLoadingListMoviesTableView(){
+        guard let disposeBag = self.viewModel?.disposeBag else {return}
         self.listFilmsView.listFilmsTableView.rx.setDelegate(self).disposed(by: disposeBag)
         self.viewModel?.model.bind(to: self.listFilmsView.listFilmsTableView.rx.items(cellIdentifier: ListFilmsTableViewCell.identifier, cellType: ListFilmsTableViewCell.self)){ (row, model, cell) in
             cell.configCells(model: model)
         }.disposed(by: disposeBag)
-        
+    }
+    
+    private func isSelectedMovie(){
+        guard let disposeBag = self.viewModel?.disposeBag else {return}
         self.listFilmsView.listFilmsTableView.rx.modelSelected(MovieModel.self).subscribe { [weak self] model in
             guard let self = self else {return}
             let detailsFilmViewController:DetailsFilmViewController = DetailsFilmViewController()
