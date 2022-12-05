@@ -19,7 +19,7 @@ class DetailsFilmViewController: UIViewController {
     // Essa variavel é carregada quando seleciono um filme da tela principal, pois assim quando passar para essa tela
     // ela requisite os detalhes do filme
     public var movieId:Int = 0
-    private var viewModel:FilmsViewModel?
+    private var viewModel:DetailsFilmViewModel?
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class DetailsFilmViewController: UIViewController {
     //MARK: Metodos
     // Função que faz a requisição dos detalhes do filme
     private func isRequestDetailsMovie(){
-        self.viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .detailFilms, movieId: self.movieId)
+        self.viewModel = DetailsFilmViewModel(detailsFilmProvider: DetailsFilmProvider(), movieId: self.movieId)
     }
     
     // Função que carrega os detalhes do filme que estão vindo do objeto observado detailsMovieModel

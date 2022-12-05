@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+//Cada ViewController ira ter uma classe para ela para assinar o protocolo Coordinator
+//Para assim fazer as transições de telas
 class ListFilmsCoordinator:Coordinator {
     var navigationController: UINavigationController
     let listFilmsViewController:ListFilmsViewController = ListFilmsViewController()

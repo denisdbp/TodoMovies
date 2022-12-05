@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Protocolo Coordinator para fazer a transição de telas
 protocol Coordinator {
     var navigationController:UINavigationController {get set}
     func start()

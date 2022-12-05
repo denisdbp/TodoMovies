@@ -1,67 +1,37 @@
 //
-//  FilmsViewModel.swift
+//  DetailsFilmViewModel.swift
 //  TodoMovies
 //
-//  Created by Admin on 28/11/22.
+//  Created by Admin on 05/12/22.
 //
 
 import Foundation
 import RxSwift
-import RxCocoa
 
-// Enum para verificar qual Endpoint de filmes requisitar
-enum EndPointOption {
-    case listFilms
-    case detailFilms
-}
-
-class FilmsViewModel {
+class DetailsFilmViewModel {
     
     //MARK: Atributos
-    private var apiFilmsProvider:ApiFilmsProvider?
+    private var detailsFilmProvider:DetailsFilmProvider?
     // Variaveis que estão sendo observadas quando seu valor mudar
-    public let model: PublishSubject<[MovieModel]> = PublishSubject()
     public let detailsMovieModel:PublishSubject<[DetailsFilmModel]> = PublishSubject()
-    public let loading:PublishSubject<Bool> = PublishSubject()
     public let error:PublishSubject<Error> = PublishSubject()
     public let disposeBag = DisposeBag()
     
     //MARK: Init
-    // Aqui iniciou a ViewModel com a requisição escolhida do Enum EndPointOption
-    init(apiFilmsProvider:ApiFilmsProvider, option:EndPointOption, movieId:Int){
-        self.apiFilmsProvider = apiFilmsProvider
-        switch option {
-        case .listFilms:
-            self.listFilms()
-        case .detailFilms:
-            self.detailsFilm(movieId: movieId)
-        }
+    // Aqui iniciou a ViewModel com a requisição do EndPoint getMovieDetails
+    init(detailsFilmProvider:DetailsFilmProvider, movieId:Int) {
+        self.detailsFilmProvider = detailsFilmProvider
+        self.detailsFilm(movieId: movieId)
     }
     
     //MARK: Metodos
-    // Função que requisita na classe ApiFilmsProvider o JSON da API do Endpoint getMovieDetails
-    private func listFilms(){
-        self.apiFilmsProvider?.listFilms(completion: { [weak self] result in
-            guard let self = self else {return}
-            switch result {
-            case .success(let movies):
-                DispatchQueue.main.async {
-                    self.model.onNext(movies[0].results)
-                }
-                self.loading.onNext(false)
-            case .failure(let error):
-                self.error.onNext(error)
-            }
-        })
-    }
-    
-    // Função que requisita na classe ApiFilmsProvider o JSON da API do Endpoint getMovieDetails
+    // Função que requisita na classe DetailsFilmProvider o JSON da API do Endpoint getMovieDetails
     private func detailsFilm(movieId:Int){
-        self.apiFilmsProvider?.detailsFilm(movieId: movieId, completion: { result in
+        self.detailsFilmProvider?.detailsFilm(movieId: movieId, completion: { result in
             switch result {
-            case .success(let detailsMovies):
+            case .success(let detailsMovie):
                 DispatchQueue.main.async {
-                    self.detailsMovieModel.onNext(detailsMovies)
+                self.detailsMovieModel.onNext(detailsMovie)
                 }
             case .failure(let error):
                 self.error.onNext(error)

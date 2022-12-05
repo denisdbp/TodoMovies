@@ -7,7 +7,7 @@
 
 import UIKit
 
-// Estrutura do JSON que é recebido da lista do Endpoint GetMovieDetails
+// Estrutura do JSON que é recebido da lista do Endpoint getMovieDetails
 struct DetailsFilmModel:Decodable {
     let id : Int
     let original_title : String

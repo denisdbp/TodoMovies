@@ -16,7 +16,7 @@ class ListFilmsViewController: UIViewController {
         return view
     }()
     
-    private var viewModel:FilmsViewModel?
+    private var viewModel:ListFilmsViewModel?
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class ListFilmsViewController: UIViewController {
     //MARK: Metodos
     //Função que faz request da lista de filmes
     private func isRequestListFilms(){
-        self.viewModel = FilmsViewModel(apiFilmsProvider: ApiFilmsProvider(), option: .listFilms, movieId: 0)
+        self.viewModel = ListFilmsViewModel(listFilmsProvider: ListFilmProvider(), movieId: 0)
     }
     
     // Configuração de todos os Bindings ou seja o que esta sendo obersavado na ViewModel esta sendo enviado aqui
