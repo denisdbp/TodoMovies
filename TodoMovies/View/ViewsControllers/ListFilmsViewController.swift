@@ -77,9 +77,10 @@ class ListFilmsViewController: UIViewController {
         guard let disposeBag = self.viewModel?.disposeBag else {return}
         self.listFilmsView.listFilmsTableView.rx.modelSelected(MovieModel.self).subscribe { [weak self] model in
             guard let self = self else {return}
-            let detailsFilmViewController:DetailsFilmViewController = DetailsFilmViewController()
-            detailsFilmViewController.movieId = model.element?.id ?? 0
-            self.navigationController?.pushViewController(detailsFilmViewController, animated: true)
+            guard let navigationController = self.navigationController else {return}
+            let coordinator:DetailsFilmCoordinator = DetailsFilmCoordinator(navigationController: navigationController)
+            coordinator.detailsFilmViewController.movieId = model.element?.id ?? 0
+            coordinator.start()
         }.disposed(by: disposeBag)
     }
     

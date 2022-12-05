@@ -79,7 +79,9 @@ class DetailsFilmViewController: UIViewController {
     private func returnButton(){
         guard let disposeBag = self.viewModel?.disposeBag else {return}
         self.detailsFilmView.returnButton.rx.tap.subscribe { _ in
-            self.navigationController?.popToRootViewController(animated: true)
+            guard let navigationController = self.navigationController else {return}
+            let coordinator:DetailsFilmCoordinator = DetailsFilmCoordinator(navigationController: navigationController)
+            coordinator.popToRootViewController()
         }.disposed(by: disposeBag)
     }
     
