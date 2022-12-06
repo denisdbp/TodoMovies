@@ -7,7 +7,11 @@
 
 import Foundation
 
-class ListFilmProvider {
+protocol ListFilmProviderProtocol{
+    func listFilms(completion:@escaping(Result<[Movies], Error>)->Void)
+}
+
+class ListFilmProvider:ListFilmProviderProtocol {
     
     //Função para requisitar a lista de filmes do Endpoint getSimilarMovies da primeira tela do aplicativo
     public func listFilms(completion:@escaping(Result<[Movies], Error>)->Void){

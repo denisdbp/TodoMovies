@@ -7,7 +7,11 @@
 
 import Foundation
 
-class DetailsFilmProvider {
+protocol DetailsFilmProviderProtocol {
+    func detailsFilm(movieId:Int, completion:@escaping(Result<[DetailsFilmModel], Error>)->Void)
+}
+
+class DetailsFilmProvider:DetailsFilmProviderProtocol {
     
     // Função que requisita o detalhe do filme do Endpoint getMovieDetails selecionado na primeira tela
     public func detailsFilm(movieId:Int, completion:@escaping(Result<[DetailsFilmModel], Error>)->Void){

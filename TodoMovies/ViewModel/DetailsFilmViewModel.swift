@@ -11,7 +11,7 @@ import RxSwift
 class DetailsFilmViewModel {
     
     //MARK: Atributos
-    private var detailsFilmProvider:DetailsFilmProvider?
+    private var detailsFilmProvider:DetailsFilmProviderProtocol?
     // Variaveis que estão sendo observadas quando seu valor mudar
     public let detailsMovieModel:PublishSubject<[DetailsFilmModel]> = PublishSubject()
     public let error:PublishSubject<Error> = PublishSubject()
@@ -19,14 +19,14 @@ class DetailsFilmViewModel {
     
     //MARK: Init
     // Aqui iniciou a ViewModel com a requisição do EndPoint getMovieDetails
-    init(detailsFilmProvider:DetailsFilmProvider, movieId:Int) {
+    init(detailsFilmProvider:DetailsFilmProviderProtocol, movieId:Int) {
         self.detailsFilmProvider = detailsFilmProvider
         self.detailsFilm(movieId: movieId)
     }
     
     //MARK: Metodos
     // Função que requisita na classe DetailsFilmProvider o JSON da API do Endpoint getMovieDetails
-    private func detailsFilm(movieId:Int){
+    public func detailsFilm(movieId:Int){
         self.detailsFilmProvider?.detailsFilm(movieId: movieId, completion: { result in
             switch result {
             case .success(let detailsMovie):

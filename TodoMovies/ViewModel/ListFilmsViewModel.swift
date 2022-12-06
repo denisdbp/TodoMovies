@@ -12,7 +12,7 @@ import RxCocoa
 class ListFilmsViewModel {
     
     //MARK: Atributos
-    private var listFilmsProvider:ListFilmProvider?
+    private var listFilmsProvider:ListFilmProviderProtocol?
     // Variaveis que estão sendo observadas quando seu valor mudar
     public let model: PublishSubject<[MovieModel]> = PublishSubject()
     public let detailsMovieModel:PublishSubject<[DetailsFilmModel]> = PublishSubject()
@@ -22,7 +22,7 @@ class ListFilmsViewModel {
     
     //MARK: Init
     // Aqui iniciou a ViewModel com a requisição escolhida do Endpoint getSimilarMovies
-    init(listFilmsProvider:ListFilmProvider, movieId:Int){
+    init(listFilmsProvider:ListFilmProviderProtocol){
         self.listFilmsProvider = listFilmsProvider
         self.listFilms()
     }
